@@ -19,9 +19,10 @@
             <span>Past Orders</span>
           </a>
         </nav>
-        <a href="#" class="top-bar-cart-link">
+        <a @click="toggleSidebar" class="top-bar-cart-link">
           <i class="icofont-cart-alt icofont-1x"></i>
-          <span>Cart (0)</span>
+          <!-- update the cart - changed it to be dynamic -->
+          <span>Cart ({{ totalQuantity }})</span>
         </a>
       </header>
 
@@ -234,6 +235,18 @@
           </div>
         </div>
       </main>
+
+      <!-- passing props to the sidebar component -->
+      <sidebar
+        v-if="showSidebar"
+        :toggle="toggleSidebar"
+        :cart="cart"
+        :inventory="inventory"
+        :remove="removeItem"
+      />
     </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="../app.js"></script>
   </body>
 </html>
